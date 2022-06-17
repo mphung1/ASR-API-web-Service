@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import Options from "../components/Options/Options"
 import ScrollToTop from "../components/ScrollToTop"
 import Hero from "../components/Hero/Hero"
@@ -13,6 +13,7 @@ function Page() {
       <OurStack />
       <Options ref={resultRef}/>
       <ScrollToTop />
+      
     </>
     )
     }

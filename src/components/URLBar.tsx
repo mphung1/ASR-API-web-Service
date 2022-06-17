@@ -1,5 +1,4 @@
-import { Input, Stack } from '@chakra-ui/react'
-import { useColorMode, useColorModeValue } from '@chakra-ui/react'
+import { Input, Stack, useColorModeValue } from '@chakra-ui/react'
 
 export default function URLBar() {
   return (

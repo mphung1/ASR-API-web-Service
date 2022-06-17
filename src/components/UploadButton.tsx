@@ -177,7 +177,7 @@ export default function UploadButton() {
               left="0"
               opacity="0"
               aria-hidden="true"
-              accept="audio/*"
+              accept={["audio/*", "video/*"] }
               onDragEnter={startAnimation}
               onDragLeave={stopAnimation}
             />

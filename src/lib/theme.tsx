@@ -4,7 +4,7 @@ import { mode } from '@chakra-ui/theme-tools'
 const styles = {
   global: props => ({
     body: {
-      bg: mode('#FBD38D','#2D3748' )(props)
+      bg: mode('#FBD38D','#2D3748')(props)
     }
   })
 }
@@ -49,5 +49,12 @@ const config = {
   useSystemColorMode: true
 }
 
-const theme = extendTheme({ config, styles, components, fonts, colors })
+// const video-item = {
+//   display: flex !important;
+//   align-items: center !important;
+//   cursor: pointer;
+// }
+
+const theme = extendTheme({ config, styles, components, fonts, colors, })
 export default theme
+

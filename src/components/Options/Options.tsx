@@ -1,13 +1,8 @@
-import React, { ReactNode, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import {
-    Flex,
     Container,
     Heading,
-    Text,
-    Button,
     Stack,
-    Icon,
-    IconProps,
     useColorModeValue
   } from '@chakra-ui/react';
 

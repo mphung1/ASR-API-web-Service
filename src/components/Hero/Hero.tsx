@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import {
     Flex,
     Container,
@@ -8,10 +8,10 @@ import {
     Button,
     useColorModeValue
   } from '@chakra-ui/react';
-  import Image from 'next/image'
-  import heroPhoto from '../../../public/images/photo.png'
-  import Type from "./type"
-  import NextLink from 'next/link'
+import Image from 'next/image'
+import heroPhoto from '../../../public/images/photo.png'
+import Type from "./type"
+import NextLink from 'next/link'
 import React from 'react';
   
   const Hero = ({ resultRef }) => {

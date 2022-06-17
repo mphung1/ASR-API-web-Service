@@ -1,7 +1,7 @@
 {
-  "name": "asr_subtitles_app",
+  "name": "ASR Subtitles App",
   "version": "1.0.0",
-  "description": "Made by ASR_AI team",
+  "description": "Made by ASR-AI team",
   "main": "index.js",
   "scripts": {
     "dev": "next dev -H 0.0.0.0",
@@ -24,7 +24,9 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@types/react-router-dom": "^5.3.3",
+    "axios": "^0.27.2",
     "classnames": "^2.3.1",
+    "dotenv": "^16.0.1",
     "framer-motion": "^6.3.11",
     "gsap": "^3.10.4",
     "next": "^12.1.6",

@@ -13,7 +13,6 @@ import {
   
   import URLBar from '../URLBar'
   import ProceedButton from '../ProceedButton'
-  //var Lorem = require('react-lorem-component');
   
   export default function URLModal() {
       const { isOpen, onOpen, onClose } = useDisclosure();

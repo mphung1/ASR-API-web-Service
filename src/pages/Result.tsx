@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import ClimbingBoxLoader from 'react-spinners/ClimbingBoxLoader'
-import VoiceText from "../components/VoiceText"
 import {Container, Heading } from '@chakra-ui/react'
 
 function Result() {
@@ -23,7 +22,6 @@ function Result() {
         Video
       </Heading>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/5YlJt5EYrlM?controls=0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-        <VoiceText />
         
     </Container>
     ) 

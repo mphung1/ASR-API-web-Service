@@ -1,11 +1,10 @@
-import Logo from './logo'
 import NextLink from 'next/link'
 import {
     Container,Box,Link,Stack,Heading,Flex,Menu,MenuItem,
-    MenuList,MenuButton, MenuIcon, useColorModeValue, IconButton
+    MenuList,MenuButton, useColorModeValue, IconButton
 } from "@chakra-ui/react"
-import { SettingsIcon, EmailIcon, HamburgerIcon, ChatIcon } from '@chakra-ui/icons'
-import { IoLogoGithub } from 'react-icons/io5'
+import { HamburgerIcon, ChatIcon } from '@chakra-ui/icons'
+import Logo from './logo'
 import ThemeToggleButton from "./theme-toggle-button"
 
 const LinkItem = ({href, path, children}) => {
@@ -31,7 +30,7 @@ const Navbar = props => {
             position="fixed"
             as="nav"
             w="100%"
-            bg={useColorModeValue('#ffffff40','#20202380')}
+            bg={useColorModeValue('#FFFFFF40','#20202380')}
             style={{backdropFilter:'blur(10px'}}
             zIndex={1}
             {...props}

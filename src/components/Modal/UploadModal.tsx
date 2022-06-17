@@ -15,8 +15,6 @@ import NextLink from 'next/link'
 import UploadButton from '../UploadButton'
 import ProceedButton from '../ProceedButton'
 
-var Lorem = require('react-lorem-component');
-
 export default function UploadModal() {
     const { isOpen, onOpen, onClose } = useDisclosure();
   

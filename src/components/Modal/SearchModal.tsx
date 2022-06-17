@@ -12,9 +12,8 @@ import {
   } from "@chakra-ui/react";
 
   import ProceedButton from '../ProceedButton'
-  
-  //var Lorem = require('react-lorem-component');
-  
+  import YoutubeOutput from '../Youtube/YoutubeOutput'
+    
   export default function URLModal() {
       const { isOpen, onOpen, onClose } = useDisclosure();
     
@@ -32,12 +31,14 @@ import {
             SEARCH VIDEO
           </Button>
     
-          <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+          <Modal 
+            
+            closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-            <ModalContent>
+            <ModalContent  maxW="1000px">
               <ModalHeader>Connect to Youtube Data</ModalHeader>
               <ModalCloseButton />
-                
+                <YoutubeOutput />
     
               <ModalFooter>
                 <ProceedButton />
