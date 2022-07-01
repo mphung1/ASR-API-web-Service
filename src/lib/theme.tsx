@@ -4,7 +4,7 @@ import { mode } from '@chakra-ui/theme-tools'
 const styles = {
   global: props => ({
     body: {
-      bg: mode('#FBD38D','#2D3748')(props)
+      bg: mode('#FED8B3','#2D3748')(props)
     }
   })
 }
@@ -40,8 +40,6 @@ const colors = {
   novaLight: '#13B5EA',
   grassTeal: '#88ccca',
   novaBlue: '#00205B',
-  
-
 }
 
 const config = {

@@ -54,19 +54,12 @@ const Navbar = props => {
                     mt={{ base: 4, md: 0 }}
                 >
                     <LinkItem href="." path={path}> Home </LinkItem>
-                    <LinkItem                 
-                        path={Link}
-                        href="https://github.com/mphung1/ASR-subtitles"
-                    >
-                        Source Code
-                    </LinkItem>
-                    <LinkItem 
-                        path={path}
-                        href="/Contact"
-                    >
+                    <LinkItem href="API_Dashboard" path={path}>API Dasboard</LinkItem>
+                    <LinkItem href="Demo" path={path}>App Demo</LinkItem>
+                    <LinkItem href="/Contact" path={path}>
                         Contact Us
                       <ChatIcon />
-                    </LinkItem>             
+                    </LinkItem>          
                 </Stack>
 
         <Box flex={1} align="right">
@@ -81,7 +74,16 @@ const Navbar = props => {
               />
               <MenuList>
                 <NextLink href="/" passHref>
-                  <MenuItem as={Link}>About</MenuItem>
+                  <MenuItem as={Link}>Home</MenuItem>
+                </NextLink>
+              <NextLink href="/API_Dashboard" passHref>
+                 <MenuItem as={Link}> API Dashboard </MenuItem>
+              </NextLink>
+              <NextLink href="/Demo" passHref>
+                 <MenuItem as={Link}> App Demo </MenuItem>
+              </NextLink>
+                <NextLink href="/Contact" passHref>
+                  <MenuItem as={Link}>Contact Us</MenuItem>
                 </NextLink>
                 <MenuItem
                   as={Link}
@@ -89,9 +91,6 @@ const Navbar = props => {
                 >
                   Source Code
                 </MenuItem>
-                <NextLink href="/ContactUs" passHref>
-                  <MenuItem as={Link}>Contact Us</MenuItem>
-                </NextLink>
               </MenuList>
             </Menu>
           </Box>

@@ -109,7 +109,7 @@ import {
                             _hover={{
                               borderRadius: 'gray.300',
                             }}
-                            placeholder="message"
+                            placeholder="Leave your message."
                           />
                         </FormControl>
                         <FormControl id="name" float="right">

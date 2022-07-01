@@ -32,8 +32,7 @@ import {
           </Button>
     
           <Modal 
-            
-            closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+          closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent  maxW="1000px">
               <ModalHeader>Connect to Youtube Data</ModalHeader>

@@ -9,7 +9,6 @@ import {
     useColorModeValue
   } from '@chakra-ui/react';
 import Image from 'next/image'
-import heroPhoto from '../../../public/images/photo.png'
 import Type from "./type"
 import NextLink from 'next/link'
 import React from 'react';
@@ -40,8 +39,8 @@ import React from 'react';
             <Type />
           </Heading>
           <Text colorScheme={'gray.500'} maxW={'3xl'}>
-          ASR is a powerful subtitle-generating application that lets you create video transcripts, customize them, and even sync them in the cloud so you can use them anywhere. 
-          From closed captions provided by YouTube to transcriptions of meetings on Zoom, all is free!
+          ASR is an open-source subtitle generator application that lets you create video transcripts, customize them, and even sync them in the cloud so you can use them anywhere. 
+          From closed captions provided by YouTube to transcriptions of meetings on Zoom, all is now easy and accessible!
           </Text>
           <Stack spacing={6} direction={'row'}>
             <Button
@@ -56,19 +55,11 @@ import React from 'react';
             </Button>
             <NextLink href="https://github.com/ash2916/ASR" passHref>
             <Button rounded={'full'} px={6}>
-              How it was made
+              Backend models
             </Button>
             </NextLink>
           </Stack>
           <Flex w={'full'}>
-            <Image
-              src={heroPhoto}
-              alt="Picture of the author"
-              // width={500} automatically provided
-              // height={500} automatically provided
-              // blurDataURL="data:..." automatically provided
-              // placeholder="blur" // Optional blur-up while loading
-            />
           </Flex>
         </Stack>
       </Container>

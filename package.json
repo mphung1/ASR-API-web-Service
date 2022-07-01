@@ -40,6 +40,7 @@
     "react-lorem-ipsum": "^1.4.10",
     "react-mail-icon": "^1.0.6",
     "react-router-dom": "^6.3.0",
+    "react-slick": "^0.29.0",
     "react-spinners": "^0.12.0",
     "react-theme-toggle-button": "^1.1.0",
     "react-tsparticles": "^2.0.6",

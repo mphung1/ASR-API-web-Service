@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { Box, Container } from '@chakra-ui/react'
 import Navbar from '../navbar'
-import Footer from '../footer'
+import ScrollToTop from "../ScrollToTop"
 
 const Main = ({ children, router }) => {
     return (
@@ -14,10 +14,10 @@ const Main = ({ children, router }) => {
             </Head> 
 
             <Navbar path={router.asPath} />
-
-            <Container maxW= "container.lg" pt={14}>
+            <Box pos="absolute" top="10" left="0" right="0">
                 {children}
-            </Container>
+            </Box>
+            <ScrollToTop/>
         </Box>
     )
 }
