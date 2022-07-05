@@ -43,15 +43,22 @@ import React from 'react';
           From closed captions provided by YouTube to transcriptions of meetings on Zoom, all is now easy and accessible!
           </Text>
           <Stack spacing={6} direction={'row'}>
-            <Button
-              rounded={'full'}
+            <Button 
+              rounded={'full'} 
               px={6}
               colorScheme={useColorModeValue('blue','primary')}
               bg={useColorModeValue('blue','orange')}
+              >
+              Get started
+            </Button>
+            <Button
+              rounded={'full'}
+              px={6}
               type="submit"
               onClick={onSubmit}
-              _hover={{ bg: 'orange.500' }}>
-              Get started
+              _hover={{ bg: 'orange.500' }}
+              >
+              What this does?
             </Button>
             <NextLink href="https://github.com/ash2916/ASR" passHref>
             <Button rounded={'full'} px={6}>

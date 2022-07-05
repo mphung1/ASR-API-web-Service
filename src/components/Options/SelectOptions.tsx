@@ -13,6 +13,7 @@ import {
 import URLModal from '../Modal/URLModal'
 import UploadModal from '../Modal/UploadModal'
 import SearchModal from '../Modal/SearchModal'
+import AppFlowImg from '../../../public/images/processFlow.drawio.png'
 
 
 const WrapOptions = ({ children }: { children: ReactNode }) => {
@@ -22,7 +23,7 @@ const WrapOptions = ({ children }: { children: ReactNode }) => {
 const OptionContent = ({ children }: { children: ReactNode }) => {
   return (
     <Stack
-      bg={useColorModeValue('white', 'gray.800')}
+      bg={useColorModeValue('#FED8B3', 'black')}
       boxShadow={'lg'}
       p={8}
       rounded={'xl'}
@@ -70,7 +71,7 @@ const IllustrationImg = ({
     <Flex align={'center'} mt={8} direction={'column'}>
       <Image src={src} mb={2} borderRadius='full'
               boxSize='100px'
-              alt='Image for illustration purpose'
+              alt='Illustrative icon'
       />
     </Flex>
   );
@@ -78,12 +79,8 @@ const IllustrationImg = ({
 
  const SelectOptions = () => {
   return (
-    <Box bg={useColorModeValue('#FBD38D', 'orange')}>
+    <Box bg={useColorModeValue('white', 'orange')}>
       <Container maxW={'7xl'} py={16} as={Stack} spacing={12}>
-        <Stack spacing={0} align={'center'}>
-          <Heading>Get started</Heading>
-          <Text>// Choose 1 among 3 options below</Text>
-        </Stack>
         <Stack
           direction={{ base: 'column', md: 'row' }}
           spacing={{ base: 10, md: 4, lg: 10 }}>
@@ -91,10 +88,7 @@ const IllustrationImg = ({
             <OptionContent>
               <URLModal />
               <OptionText>
-                Send the link to the video.
-                Send the link to the video.
-                Send the link to the video.
-                Send the link to the video.
+                If your URL is correct, you&apos;ll see a video preview here.
               </OptionText>
             </OptionContent>
             <IllustrationImg
@@ -108,10 +102,8 @@ const IllustrationImg = ({
                 UPLOAD VIDEO
               </UploadModal>
               <OptionText>
-                Upload your own video.
-                Upload your own video.
-                Upload your own video.
-                Upload your video.
+                Directly upload your video from Google Drive or your local device.
+               
               </OptionText>
             </OptionContent>
             <IllustrationImg
@@ -125,9 +117,8 @@ const IllustrationImg = ({
             <OptionContent>
               <SearchModal />
               <OptionText>
-                Search for your video on Youtube.
-                Search for your video on Youtube.
-                Search for your video on Youtube.
+                Connect with Youtube. Type your search in the box to find videos.
+                
               </OptionText>
             </OptionContent>
             <IllustrationImg
