@@ -1,10 +1,16 @@
-import React from 'react'
-import SideBar from '../components/SideBar'
+import React from "react";
+import SideBar from "../components/Fixed/SideBar";
+import { BrowserRouter } from "react-router-dom";
+import Content from "../components/APIDocs/Content";
 
-export default function API_dashboard() {
+const API_dashboard = () => {
   return (
     <>
-    <SideBar />
+      <BrowserRouter>
+        <Content />
+      </BrowserRouter>
     </>
-  )
-}
+  );
+};
+
+export default API_dashboard;

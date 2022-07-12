@@ -1,11 +1,11 @@
-import CaptionCarousel from '../components/CaptionCarousel'
+import CaptionCarousel from "../components/Fixed/CaptionCarousel";
 
 function Page() {
   return (
     <>
-      <CaptionCarousel/>
+      <CaptionCarousel />
     </>
-    )
-    }
-    
-export default Page
+  );
+}
+
+export default Page;

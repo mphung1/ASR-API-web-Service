@@ -22,8 +22,8 @@ import { MdEmail, MdLocationOn, MdOutlineEmail } from "react-icons/md";
 import { BsGithub, BsPerson } from "react-icons/bs";
 import NextLink from "next/link";
 import emailjs from "@emailjs/browser";
-
-const CONTACT_FORM_KEY = process.env.REACT_APP_CONTACT_FORM_KEY;
+import ReCAPTCHA from "react-google-recaptcha";
+// const CONTACT_FORM_KEY = process.env.REACT_APP_CONTACT_FORM_KEY;
 
 const Result = () => {
   return (
@@ -36,6 +36,7 @@ const Result = () => {
 export default function ContactUs() {
   const [result, showResult] = useState(false);
   const form = useRef();
+  // const reRef = useRef<ReCAPTCHA>();
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -56,6 +57,7 @@ export default function ContactUs() {
         }
       );
     e.target.reset();
+    // const token = await reRef.current.executeAsync();
     showResult(true);
   };
 
@@ -137,20 +139,18 @@ export default function ContactUs() {
                           <FormControl id="name">
                             <FormLabel>Your Name</FormLabel>
                             <InputGroup borderColor="#E0E1E7">
-                              <InputLeftElement
-                                pointerEvents="none"
-                                children={<BsPerson color="gray.800" />}
-                              />
+                              <InputLeftElement pointerEvents="none">
+                                <BsPerson color="gray.800" />
+                              </InputLeftElement>
                               <Input type="text" name="name" size="md" />
                             </InputGroup>
                           </FormControl>
                           <FormControl id="email">
                             <FormLabel>E-mail</FormLabel>
                             <InputGroup borderColor="#E0E1E7">
-                              <InputLeftElement
-                                pointerEvents="none"
-                                children={<MdOutlineEmail color="gray.800" />}
-                              />
+                              <InputLeftElement pointerEvents="none">
+                                <MdOutlineEmail color="gray.800" />
+                              </InputLeftElement>
                               <Input type="email" name="email" size="md" />
                             </InputGroup>
                           </FormControl>
@@ -165,7 +165,8 @@ export default function ContactUs() {
                             />
                           </FormControl>
                           <Input
-                            variant="solid"
+                            mt={2}
+                            variant="outline"
                             bg={useColorModeValue("#1970F1", "orange")}
                             color="white"
                             _hover={{}}
@@ -173,6 +174,11 @@ export default function ContactUs() {
                             value="Send message"
                           />
                           {result ? <Result /> : null}
+                          {/* <ReCAPTCHA
+                            siteKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                            size="invisible"
+                            ref={reRef}
+                          /> */}
                         </form>
                       </VStack>
                     </Box>

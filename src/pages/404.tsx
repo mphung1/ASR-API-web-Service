@@ -1,4 +1,4 @@
-import NextLink from 'next/link'
+import NextLink from "next/link";
 import {
   Box,
   Heading,
@@ -6,29 +6,33 @@ import {
   Container,
   Divider,
   Button,
-  useColorModeValue
-} from '@chakra-ui/react'
+  Center,
+  useColorModeValue,
+} from "@chakra-ui/react";
 
-import Boxes from '../components/Boxes'
+import Boxes from "../components/Fixed/Boxes";
 
 const NotFound = () => {
   return (
     <>
-    <Container >
-      <Heading as="h1">Not found</Heading>
-      <Text>The page you&apos;re looking for was not found.</Text>
-      <Divider my={6} />
-      <Box my={6} align="center">
-        <NextLink href="/" passHref>
-          <Button colorScheme={useColorModeValue('blue', 'orange')}>
-          Return to home
-          </Button>
-        </NextLink>
-      </Box>
-      <Boxes />
-    </Container>
+      <Container>
+        <Center>
+          <Heading as="h1">404</Heading>
+        </Center>
+        <Center>
+          <Text>The page you&apos;re looking for was not found.</Text>
+        </Center>
+        <Box my={6} align="center">
+          <NextLink href="/" passHref>
+            <Button colorScheme={useColorModeValue("blue", "orange")}>
+              Return to homepage
+            </Button>
+          </NextLink>
+        </Box>
+        <Boxes />
+      </Container>
     </>
-  )
-}
+  );
+};
 
-export default NotFound
+export default NotFound;

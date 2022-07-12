@@ -1,58 +1,63 @@
-import { extendTheme } from '@chakra-ui/react'
-import { mode } from '@chakra-ui/theme-tools'
+import {
+  extendTheme,
+  ComponentStyleConfig,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import { mode } from "@chakra-ui/theme-tools";
 
 const styles = {
-  global: props => ({
+  global: (props) => ({
     body: {
-      bg: mode('#FED8B3','#2D3748')(props)
-    }
-  })
-}
+      bg: mode("#FED8B3", "#2D3748")(props),
+    },
+  }),
+};
 
 const components = {
   Heading: {
     variants: {
-      'section-title': {
-        textDecoration: 'underline',
+      "section-title": {
+        textDecoration: "underline",
         fontSize: 20,
         textUnderlineOffset: 6,
-        textDecorationColor: '#525252',
+        textDecorationColor: "#525252",
         textDecorationThickness: 4,
         marginTop: 3,
-        marginBottom: 4
-      }
-    }
+        marginBottom: 4,
+      },
+    },
   },
   Link: {
-    baseStyle: props => ({
-      color: mode('#3d7aed', '#ff63c3')(props),
-      textUnderlineOffset: 3
-    })
-  }
-}
+    baseStyle: (props) => ({
+      color: mode("#3d7aed", "#FED8B3")(props),
+      textUnderlineOffset: 3,
+    }),
+  },
+  Divider: {
+    defaultProps: {
+      size: "lg",
+      variant: "solid",
+      colorScheme: "black",
+    },
+  },
+};
 
 const fonts = {
-  heading: "'M PLUS Rounded 1c'"
-}
+  heading: "'M PLUS Rounded 1c'",
+};
 
 const colors = {
-  primary: '#F6AD55',
-  novaLight: '#13B5EA',
-  grassTeal: '#88ccca',
-  novaBlue: '#00205B',
-}
+  primary: "#F6AD55",
+  secondary: "blue.500",
+  novaLight: "#13B5EA",
+  novaBlue: "#00205B",
+  grassTeal: "#88ccca",
+};
 
 const config = {
-  initialColorMode: 'dark',
-  useSystemColorMode: true
-}
+  initialColorMode: "dark",
+  useSystemColorMode: true,
+};
 
-// const video-item = {
-//   display: flex !important;
-//   align-items: center !important;
-//   cursor: pointer;
-// }
-
-const theme = extendTheme({ config, styles, components, fonts, colors, })
-export default theme
-
+const theme = extendTheme({ config, styles, components, fonts, colors });
+export default theme;
