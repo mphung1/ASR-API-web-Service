@@ -34,7 +34,7 @@ const Result = () => {
 };
 
 export default function ContactUs() {
-  const [result, showResult] = useState(false);
+  const [result, showResult] = useState<boolean>(false);
   const form = useRef();
   // const reRef = useRef<ReCAPTCHA>();
 

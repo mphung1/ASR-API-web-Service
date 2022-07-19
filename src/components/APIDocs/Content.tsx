@@ -1,13 +1,3 @@
-import React, { ReactNode, ReactText, useState } from "react";
-import {
-  Router,
-  Routes,
-  Route,
-  Link,
-  useLocation,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
 import {
   Heading,
   Text,
@@ -28,44 +18,57 @@ import {
   BoxProps,
   FlexProps,
 } from "@chakra-ui/react";
-import CoreResources from "./CoreResources";
-import Plugin from "./Plugin";
-import Layout from "./Layout";
+import { FiSearch } from "react-icons/fi";
 
-export default function Content() {
-  let location = useLocation();
-
-  // The `backgroundLocation` state is the location that we were at when one of
-  // the gallery links was clicked. If it's there, use it as the location for
-  // the <Routes> so we show the gallery in the background, behind the modal.
-  let state = location.state as { backgroundLocation?: Location };
-
+function Content({ Category }: { Category: string }) {
   return (
-    <>
-      <Routes location={state?.backgroundLocation || location}>
-        <Route path="/API_Dashboard" element={<Layout />}>
-          <Route index element={<CoreResources />} />
-          <Route path="/API_Dashboard/Plugin" element={<Plugin />} />
-          <Route path="*" element={<NoMatch />} />
-        </Route>
-      </Routes>
-    </>
+    <Flex
+      w="84.1%"
+      bgColor={useColorModeValue("white", "blackAlpha.800")}
+      flexDirection="column"
+      overflow="auto"
+      minH="100vh"
+      marginLeft="200"
+    >
+      <Box pos="relative" ml="100px" mt="10px" mr="100px">
+        <InputGroup
+          bg="white"
+          border="none"
+          borderRadius="10px"
+          ml={5}
+          borderColor="white"
+        >
+          {" "}
+          <InputLeftElement pointerEvents="none" color="gray">
+            <FiSearch />
+          </InputLeftElement>
+          <Input type="number" placeholder="Search" borderRadius="10px" />
+        </InputGroup>
+
+        <Heading fontWeight="normal" mt={10} letterSpacing="tight">
+          Category:{" "}
+          <Flex fontWeight="bold" display="inline-flex">
+            {Category}
+          </Flex>
+        </Heading>
+
+        <Flex justifyContent="space-between" mt={8}>
+          <Flex align="flex-end">
+            <Heading size="lg" letterSpacing="tight">
+              Title
+            </Heading>
+            <Text fontSize="sm" color="gray" ml={4}>
+              Description
+            </Text>
+          </Flex>
+        </Flex>
+        <Divider orientation="horizontal" variant="solid" />
+        <Flex mt={5}>
+          <Text>Content</Text>
+        </Flex>
+      </Box>
+    </Flex>
   );
 }
 
-function Modal() {
-  let navigate = useNavigate();
-
-  let buttonRef = React.useRef<HTMLButtonElement>(null);
-}
-
-function NoMatch() {
-  return (
-    <div>
-      <h2>Nothing to see here!</h2>
-      <p>
-        <Link to="/">Go to homepage</Link>
-      </p>
-    </div>
-  );
-}
+export default Content;

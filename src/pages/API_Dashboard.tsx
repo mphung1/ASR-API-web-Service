@@ -1,13 +1,12 @@
 import React from "react";
-import SideBar from "../components/Fixed/SideBar";
 import { BrowserRouter } from "react-router-dom";
-import Content from "../components/APIDocs/Content";
+import Layout from "../components/APIDocs/Layout";
 
 const API_dashboard = () => {
   return (
     <>
       <BrowserRouter>
-        <Content />
+        <Layout />
       </BrowserRouter>
     </>
   );

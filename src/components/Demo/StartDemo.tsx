@@ -9,20 +9,13 @@ import {
   useNavigate,
   useParams,
 } from "react-router-dom";
-import {
-  Container,
-  Text,
-  Flex,
-  Input,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import Layout from "./Layout";
+import OptionNavBar from "./OptionNavBar";
 import Search from "./Search";
 import Upload from "./Upload";
-import ByUrlView from "./ByUrlView";
+import UrlReader from "./UrlReader";
 import GoogleDrivePicker from "./GoogleDrivePicker";
 
-export default function StartDemo() {
+const StartDemo = () => {
   let location = useLocation();
 
   // The `backgroundLocation` state is the location that we were at when one of
@@ -33,17 +26,17 @@ export default function StartDemo() {
   return (
     <div>
       <Routes location={state?.backgroundLocation || location}>
-        <Route path="/Demo" element={<Layout />}>
-          <Route index element={<Search />} />
+        <Route path="/Demo" element={<OptionNavBar />}>
+          <Route path="/Demo/Search" element={<Search />} />
           <Route path="/Demo/Upload" element={<Upload />} />
-          <Route path="/Demo/ByUrl" element={<ByUrlView />} />
+          <Route path="/Demo/ByUrl" element={<UrlReader />} />
           <Route path="/Demo/GoogleDrive" element={<GoogleDrivePicker />} />
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
     </div>
   );
-}
+};
 
 function Modal() {
   let navigate = useNavigate();
@@ -61,3 +54,5 @@ function NoMatch() {
     </div>
   );
 }
+
+export default StartDemo;

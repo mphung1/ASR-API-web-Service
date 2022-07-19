@@ -3,7 +3,8 @@ import {
   ComponentStyleConfig,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
+import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
+import { Dict } from "@chakra-ui/utils";
 
 const styles = {
   global: (props) => ({
@@ -28,7 +29,7 @@ const components = {
     },
   },
   Link: {
-    baseStyle: (props) => ({
+    baseStyle: (props: Dict<any> | StyleFunctionProps) => ({
       color: mode("#3d7aed", "#FED8B3")(props),
       textUnderlineOffset: 3,
     }),
@@ -59,5 +60,11 @@ const config = {
   useSystemColorMode: true,
 };
 
-const theme = extendTheme({ config, styles, components, fonts, colors });
+const theme = extendTheme({
+  config,
+  styles,
+  components,
+  fonts,
+  colors,
+});
 export default theme;

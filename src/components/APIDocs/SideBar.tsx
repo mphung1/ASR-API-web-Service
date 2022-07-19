@@ -6,7 +6,6 @@ import {
   Flex,
   Icon,
   useColorModeValue,
-  Link,
   Drawer,
   DrawerContent,
   Text,
@@ -16,26 +15,28 @@ import {
 } from "@chakra-ui/react";
 import { FiCompass, FiArrowDownLeft, FiKey } from "react-icons/fi";
 import { IconType } from "react-icons";
-import NextLink from "next/link";
+import { Link, Outlet } from "react-router-dom";
 
 interface LinkItemProps {
+  key: number;
   name: string;
   icon: IconType;
   path: string;
 }
 const LinkItems: Array<LinkItemProps> = [
   {
+    key: 1,
     name: "Core Resources",
     icon: FiCompass,
-    path: "./API_Dashboard",
+    path: "./CoreResources",
   },
-  { name: "Plugin", icon: FiKey, path: "/API_Dashboard/Plugin" },
+  { key: 2, name: "Plugin", icon: FiKey, path: "./Plugin" },
 ];
 
 export default function SideBar({ children }: { children?: ReactNode }) {
   // const [mobile, setMobile] = useState(false);
+  // const activeMenu = true;
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const activeMenu = true;
 
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
@@ -70,14 +71,11 @@ interface SidebarProps extends BoxProps {
 interface NavItemProps extends FlexProps {
   icon: IconType;
   children: ReactText;
+  href: string;
 }
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
+const NavItem = ({ icon, children, href, ...rest }: NavItemProps) => {
   return (
-    <Link
-      href=""
-      style={{ textDecoration: "none" }}
-      _focus={{ boxShadow: "none" }}
-    >
+    <Link to={href} style={{ textDecoration: "none" }}>
       <Flex
         align="center"
         p="4"
@@ -86,7 +84,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
         role="group"
         cursor="pointer"
         _hover={{
-          bg: useColorModeValue("blue.500", "orange.300"),
+          bg: useColorModeValue("blue.400", "orange.200"),
           color: "white",
         }}
         {...rest}
@@ -109,29 +107,36 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   return (
-    <Box
-      bg={useColorModeValue("white", "black")}
-      borderRight="1px"
-      borderRightColor={useColorModeValue("gray.200", "gray.700")}
-      w={{ base: "full", md: 60 }}
-      pos="fixed"
-      h="full"
-      {...rest}
-    >
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          API Docs
-        </Text>
-        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
-      </Flex>
-      {LinkItems.map((link) => (
-        <NextLink href={link.href}>
-          <NavItem key={link.name} icon={link.icon}>
-            {link.name}
-          </NavItem>
-        </NextLink>
-      ))}
-    </Box>
+    <>
+      <Box
+        bg={useColorModeValue("white", "black")}
+        borderRight="1px"
+        borderRightColor={useColorModeValue("gray.200", "gray.700")}
+        w={{ base: "full", md: 60 }}
+        pos="fixed"
+        h="full"
+        {...rest}
+      >
+        <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+          <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
+            API Docs
+          </Text>
+          <CloseButton
+            display={{ base: "flex", md: "none" }}
+            onClick={onClose}
+          />
+        </Flex>
+        <nav>
+          {LinkItems.map((link) => (
+            <NavItem key={link.key} icon={link.icon} href={link.path}>
+              {link.name}
+            </NavItem>
+          ))}
+        </nav>
+      </Box>
+
+      <Outlet />
+    </>
   );
 };
 

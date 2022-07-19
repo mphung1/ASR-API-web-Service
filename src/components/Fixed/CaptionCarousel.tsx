@@ -24,13 +24,18 @@ const settings = {
 };
 
 export default function CaptionCarousel() {
-  const [slider, setSlider] = React.useState<Slider | null>(null);
+  const [slider, setSlider] = React.useState<Slider>(null);
 
   // Breakpoints which changes the position of buttons as the screen size changes
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30 %", md: "40px" });
-  // Ttatic or loaded from a server
-  const cards = [
+  interface CardProps {
+    title: string;
+    text: string;
+    image: string;
+  }
+
+  const cards: Array<CardProps> = [
     {
       title: "Our Team Story",
       text: "Automated Speech Recognition is a technology which enables machines to recognize and convert spoken language into text. ",
@@ -117,7 +122,7 @@ export default function CaptionCarousel() {
             backgroundSize="cover"
             backgroundImage={`url(${card.image})`}
           >
-            {/* This is the block you need to change, to customize the caption */}
+            {/* Customize the caption */}
             <Container size="container.lg" height="600px" position="relative">
               <Stack
                 spacing={6}

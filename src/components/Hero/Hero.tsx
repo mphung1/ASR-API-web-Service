@@ -24,17 +24,17 @@ import ColoredButton from "../Fixed/ColoredButton";
 import StartDemo from "../Demo/StartDemo";
 import { BrowserRouter } from "react-router-dom";
 
-function SelectButton({ href }: { href: string }) {
+const SelectButton = ({ href }: { href: string }) => {
   return (
-    <Box my={6} align="center">
+    <Box my={6}>
       <NextLink href={href} passHref>
         <ColoredButton btnText="Select" mr={3} />
       </NextLink>
     </Box>
   );
-}
+};
 
-const Hero = ({ resultRef }: { resultRef }) => {
+const Hero = ({ resultRef }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     resultRef.current.scrollIntoView({ behavior: "smooth" });
@@ -109,4 +109,4 @@ const Hero = ({ resultRef }: { resultRef }) => {
   );
 };
 
-export default React.forwardRef(Hero);
+export default Hero;

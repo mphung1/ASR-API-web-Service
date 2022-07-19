@@ -4,7 +4,7 @@ import { ArrowUpIcon } from "@chakra-ui/icons";
 import { gsap } from "gsap";
 
 const ScrollToTop = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   const scrollButton: MutableRefObject<any> = useRef();
 
   useEffect(() => {

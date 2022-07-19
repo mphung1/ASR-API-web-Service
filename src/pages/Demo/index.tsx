@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import AppInfo from "../../components/AppInfo/AppInfo";
 import Hero from "../../components/Hero/Hero";
 
 function Page() {
-  const resultRef = React.useRef<HTMLInputElement>(null);
+  const resultRef = useRef<HTMLInputElement>(null);
 
   return (
     <>

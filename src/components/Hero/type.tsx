@@ -1,7 +1,12 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
 
-const IntroPhrase = {
+const IntroPhrase: {
+  strings: string[];
+  autoStart: boolean;
+  loop: boolean;
+  deleteSpeed?: number;
+} = {
   strings: ["Automated Speech Recognizer", "Inspired by AI", "Made for you"],
   autoStart: true,
   loop: true,

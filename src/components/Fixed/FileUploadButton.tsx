@@ -105,13 +105,13 @@ const PreviewImage = forwardRef<BoxProps, typeof Box>((props, ref) => {
   );
 });
 
-const fileMaxSize = 30; //bytes
+const fileMaxSize = 3000000000; //bytes
 const acceptedFileTypes = "audio/*, video/*";
 const acceptedFileTypesArray = acceptedFileTypes.split(",").map((item) => {
   return item.trim();
 });
 
-export default function FileUploadButton() {
+const FileUploadButton = () => {
   const controls = useAnimation();
   const startAnimation = () => controls.start("hover");
   const stopAnimation = () => controls.stop();
@@ -214,7 +214,7 @@ export default function FileUploadButton() {
                       multiple={false}
                       onDragEnter={startAnimation}
                       onDragLeave={stopAnimation}
-                      accept={["audio/*", "video/*"]}
+                      accept={["video/*", "audio/*"]}
                     >
                       {({ getRootProps, getInputProps }) => (
                         <section>
@@ -238,4 +238,6 @@ export default function FileUploadButton() {
       </Container>
     </>
   );
-}
+};
+
+export default FileUploadButton;

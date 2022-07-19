@@ -1,20 +1,13 @@
 import { useState, useEffect, Component } from "react";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
-import {
-  Container,
-  Heading,
-  Box,
-  Flex,
-  Grid,
-  GridItem,
-} from "@chakra-ui/react";
+import { Container, Box, Flex, Text, Textarea } from "@chakra-ui/react";
 import YouTube, { YouTubeProps } from "react-youtube";
-import YoutubeOutput from "../../components/Youtube/YoutubeOutput";
+import ReactPlayer from "react-player";
+import ColoredButton from "../../components/Fixed/ColoredButton";
 
-function YoutubeExample() {
+function YoutubeExample({ videoId }: { videoId: string }) {
   const onPlayerReady: YouTubeProps["onReady"] = (event) => {
-    // access to player in all event handlers via event.target
-    event.target.playVideo();
+    event.target.pauseVideo();
     console.log(event.target);
     // this.setState({
     //   playerObj: event.target,
@@ -35,7 +28,6 @@ function YoutubeExample() {
       autoplay: 1,
     },
   };
-  const videoId = "qvXQdmIwwa0";
 
   // const componentUnmount: YoutubeProps[["onStateChange", "onPlay"]] = (
   //   event
@@ -45,24 +37,37 @@ function YoutubeExample() {
   //   console.log(player.getCurrentTime());
   // };
   return (
-    <YouTube
-      videoId={videoId}
-      opts={opts}
-      onReady={onPlayerReady}
-      onPlay={videoOnPlay}
-      onStateChange={videoStateChange}
-    />
+    <>
+      <YouTube
+        videoId={videoId}
+        opts={opts}
+        onReady={onPlayerReady}
+        onPlay={videoOnPlay}
+        onStateChange={videoStateChange}
+      />
+    </>
   );
 }
 
 function Result() {
   const [loading, setLoading] = useState(false);
+  const [value, setValue] = useState("");
+  const [controls, handleToggleControls] = useState(true);
+
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+    setValue(inputValue);
+    console.log(inputValue);
+  };
+  const url =
+    "hhttps://www.youtube.com/watch?v=qvXQdmIwwa0&ab_channel=T%C3%BASalmon";
+  const SEPARATOR = " · ";
 
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 1000);
   }, []);
 
   return (
@@ -72,16 +77,62 @@ function Result() {
           <ClimbingBoxLoader loading={loading} />
         </Box>
       ) : (
-        <Container maxW="container.xl" mt={4}>
-          <Grid
-            h="200px"
-            templateRows="repeat(2, 1fr)"
-            templateColumns="repeat(5, 1fr)"
-            gap={4}
-          >
-            <YoutubeExample videoId="qvXQdmIwwa0" />
-          </Grid>
-        </Container>
+        <>
+          <Box margin="auto" text-align="center">
+            <Box
+              display="inline-block"
+              max-width="480px"
+              margin="20px"
+              text-align="left"
+              vertical-align="top"
+            >
+              <Text fontSize="2xl">Subtitles Generator Demo</Text>
+              <ReactPlayer url={url} width={500} height={250} />
+              <table>
+                <tbody>
+                  <tr>
+                    <th>
+                      <label htmlFor="controls">Controls</label>
+                    </th>
+                    <td>
+                      <input
+                        id="controls"
+                        type="checkbox"
+                        checked={controls}
+                        onChange={handleToggleControls}
+                      />
+                      <em>&nbsp; Requires player reload</em>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Actions</th>
+                    <td>
+                      <ColoredButton btnText="Share" mr={2} />
+                      <ColoredButton btnText="Export" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </Box>
+            <Box display="inline-block">
+              <Textarea
+                value={value}
+                onChange={handleInputChange}
+                placeholder="Content will be rendered here."
+                focusBorderColor="black"
+                height={450}
+                width={700}
+              />
+            </Box>
+            <footer margin="20px">
+              Version <strong>0.1.0</strong>
+              {SEPARATOR}
+              <a href="https://github.com/mphung1/ASR-API-web-Service">
+                <u>GitHub</u>
+              </a>
+            </footer>
+          </Box>
+        </>
       )}
     </>
   );

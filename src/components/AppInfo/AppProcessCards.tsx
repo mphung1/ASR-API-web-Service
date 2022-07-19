@@ -33,7 +33,13 @@ function AppProcessCards() {
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "40px" });
 
-  const cards = [
+  interface CardProps {
+    title: string;
+    text: string;
+    image: string;
+  }
+
+  const cards: Array<CardProps> = [
     {
       title: "Clients",
       text: "",

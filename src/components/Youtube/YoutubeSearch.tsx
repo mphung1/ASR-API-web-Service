@@ -3,8 +3,9 @@ import SearchBar from "./YoutubeSearchBar";
 import youtube from "../../pages/api/youtube";
 import VideoList from "./VideoList";
 import VideoDetail from "./VideoDetail";
+import { Flex } from "@chakra-ui/react";
 
-class YoutubeOutput extends React.Component {
+class YoutubeSearch extends React.Component {
   state = {
     videos: [],
     selectedVideo: null,
@@ -27,24 +28,22 @@ class YoutubeOutput extends React.Component {
 
   render() {
     return (
-      <div className="ui container" style={{ marginTop: "1em" }}>
-        <SearchBar handleFormSubmit={this.handleSubmit} />
-        <div className="ui grid">
-          <div className="ui row">
-            <div className="eleven wide column">
-              <VideoDetail video={this.state.selectedVideo} />
-            </div>
-            <div className="five wide column">
-              <VideoList
-                handleVideoSelect={this.handleVideoSelect}
-                videos={this.state.videos}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      <>
+        <Flex mt={2} ml="40%">
+          <SearchBar handleFormSubmit={this.handleSubmit} />
+        </Flex>
+        <Flex mt={2} ml="30%">
+          <VideoDetail video={this.state.selectedVideo} />
+        </Flex>
+        <Flex mt={20}>
+          <VideoList
+            handleVideoSelect={this.handleVideoSelect}
+            videos={this.state.videos}
+          />
+        </Flex>
+      </>
     );
   }
 }
 
-export default YoutubeOutput;
+export default YoutubeSearch;

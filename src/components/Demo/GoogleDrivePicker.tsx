@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import useDrivePicker from "react-google-drive-picker";
 import { Container, Button } from "@chakra-ui/react";
 import { FaGoogleDrive } from "react-icons/fa";
@@ -35,7 +35,7 @@ function GoogleDrivePicker() {
 
   return (
     <>
-      <Container mt="150" ml="500">
+      <Container mt="10%" ml="35%">
         <Button
           rightIcon={<FaGoogleDrive />}
           onClick={() => handleOpenPicker()}

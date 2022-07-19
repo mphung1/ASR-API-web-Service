@@ -1,9 +1,10 @@
-import YoutubeOutput from "../Youtube/YoutubeOutput";
+import React from "react";
+import YoutubeSearch from "../Youtube/YoutubeSearch";
 
 function Search() {
   return (
     <>
-      <YoutubeOutput />
+      <YoutubeSearch />
     </>
   );
 }

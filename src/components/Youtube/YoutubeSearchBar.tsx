@@ -22,24 +22,22 @@ class YoutubeSearchBar extends React.Component {
   render() {
     return (
       <>
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <div>
-              <InputGroup>
-                <InputLeftElement pointerEvents="none">
-                  <FaYoutube color="gray.300" />
-                </InputLeftElement>
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <InputGroup>
+              <InputLeftElement pointerEvents="none">
+                <FaYoutube color="gray.300" />
+              </InputLeftElement>
 
-                <Input
-                  onChange={this.handleChange}
-                  name="video-search"
-                  type="text"
-                  placeholder="Enter the keyword to find videos."
-                />
-              </InputGroup>
-            </div>
-          </form>
-        </div>
+              <Input
+                onChange={this.handleChange}
+                name="video-search"
+                type="text"
+                placeholder="Enter keyword for videos"
+              />
+            </InputGroup>
+          </div>
+        </form>
       </>
     );
   }

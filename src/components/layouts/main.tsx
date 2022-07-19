@@ -4,7 +4,7 @@ import { Box, Container } from "@chakra-ui/react";
 import Navbar from "../Fixed/navbar";
 import ScrollToTop from "../Fixed/ScrollToTop";
 
-const Main = ({ children, router }: { children: ReactNode; router: any }) => {
+const Main = ({ children, router }) => {
   return (
     <Box as="main" pb={8}>
       <Head>
