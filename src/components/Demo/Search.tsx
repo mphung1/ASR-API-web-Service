@@ -1,12 +1,54 @@
 import React from "react";
-import YoutubeSearch from "../Youtube/YoutubeSearch";
+import SearchBar from "../../components/Youtube/YoutubeSearchBar";
+import youtube from "../../pages/api/youtube";
+import VideoList from "../../components/Youtube/VideoList";
+import VideoDetail from "../../components/Youtube/VideoDetail";
+import { Flex } from "@chakra-ui/react";
 
-function Search() {
-  return (
-    <>
-      <YoutubeSearch />
-    </>
-  );
+class Search extends React.Component<any, any> {
+  state = {
+    videos: [],
+    selectedVideo: null,
+  };
+
+  handleSubmit = async (termFromSearchBar) => {
+    const response = await youtube.get("/search", {
+      params: {
+        q: termFromSearchBar,
+      },
+    });
+
+    this.setState({
+      videos: response.data.items,
+    });
+    console.log("response", response);
+  };
+
+  handleVideoSelect = (video) => {
+    this.setState({ selectedVideo: video });
+    console.log("selected", video);
+    const videoId = video.id.videoId;
+    this.props.parentCallback(videoId);
+  };
+
+  render() {
+    return (
+      <>
+        <Flex mt={2} ml="40%">
+          <SearchBar handleFormSubmit={this.handleSubmit} />
+        </Flex>
+        <Flex mt={2} ml="30%">
+          <VideoDetail video={this.state.selectedVideo} />
+        </Flex>
+        <Flex mt={20}>
+          <VideoList
+            handleVideoSelect={this.handleVideoSelect}
+            videos={this.state.videos}
+          />
+        </Flex>
+      </>
+    );
+  }
 }
-
+console.log;
 export default Search;

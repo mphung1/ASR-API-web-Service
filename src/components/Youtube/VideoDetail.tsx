@@ -1,8 +1,15 @@
 import React from "react";
+import { Flex, Text } from "@chakra-ui/react";
 
 const VideoDetail = ({ video }) => {
   if (!video) {
-    return <div></div>;
+    return (
+      <>
+        <Flex ml="12%">
+          <Text color="gray">Your chosen video will be rendered here.</Text>
+        </Flex>
+      </>
+    );
   }
 
   const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;

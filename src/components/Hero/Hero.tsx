@@ -17,11 +17,10 @@ import {
   useDisclosure,
   useColorModeValue,
 } from "@chakra-ui/react";
-import Image from "next/image";
 import Type from "./type";
 import NextLink from "next/link";
 import ColoredButton from "../Fixed/ColoredButton";
-import StartDemo from "../Demo/StartDemo";
+import DemoOptionsRoutes from "../Demo/DemoOptionsRoutes";
 import { BrowserRouter } from "react-router-dom";
 
 const SelectButton = ({ href }: { href: string }) => {
@@ -41,6 +40,33 @@ const Hero = ({ resultRef }) => {
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const ModalPopUp = () => {
+    return (
+      <>
+        <Modal
+          closeOnOverlayClick={false}
+          size="full"
+          isOpen={isOpen}
+          onClose={onClose}
+        >
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Insert the input file</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <BrowserRouter>
+                <DemoOptionsRoutes />
+              </BrowserRouter>
+            </ModalBody>
+            <ModalFooter>
+              <SelectButton href="/Demo/Test" />
+              <Button onClick={onClose}>Cancel</Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </>
+    );
+  };
 
   return (
     <Container maxW="container.lg">
@@ -73,27 +99,7 @@ const Hero = ({ resultRef }) => {
             btnText="Get started"
             rounded={"full"}
           />
-          <Modal
-            closeOnOverlayClick={false}
-            size="full"
-            isOpen={isOpen}
-            onClose={onClose}
-          >
-            <ModalOverlay />
-            <ModalContent>
-              <ModalHeader>Insert the input file</ModalHeader>
-              <ModalCloseButton />
-              <ModalBody>
-                <BrowserRouter>
-                  <StartDemo />
-                </BrowserRouter>
-              </ModalBody>
-              <ModalFooter>
-                <SelectButton href="/Demo/Result" />
-                <Button onClick={onClose}>Cancel</Button>
-              </ModalFooter>
-            </ModalContent>
-          </Modal>
+          <ModalPopUp />
           <Button rounded={"full"} px={6} type="submit" onClick={onSubmit}>
             What this does?
           </Button>

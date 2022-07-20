@@ -1,6 +1,6 @@
 import React from "react";
 import VideoItem from "./VideoItem";
-import { Flex, SimpleGrid, Grid, GridItem } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 
 const VideoList = ({ videos, handleVideoSelect }) => {
   const renderedVideos = videos.map((video) => {
@@ -11,7 +11,6 @@ const VideoList = ({ videos, handleVideoSelect }) => {
         handleVideoSelect={handleVideoSelect}
       />
     );
-    // console.log(video.id);
   });
 
   return (

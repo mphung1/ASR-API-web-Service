@@ -15,13 +15,18 @@ import Upload from "./Upload";
 import UrlReader from "./UrlReader";
 import GoogleDrivePicker from "./GoogleDrivePicker";
 
-const StartDemo = () => {
+const DemoOptionRoutes = () => {
   let location = useLocation();
 
   // The `backgroundLocation` state is the location that we were at when one of
   // the gallery links was clicked. If it's there, use it as the location for
   // the <Routes> so we show the gallery in the background, behind the modal.
   let state = location.state as { backgroundLocation?: Location };
+
+  const [msg, setMsg] = useState();
+  const handleCallback = (childData) => {
+    setMsg(childData);
+  };
 
   return (
     <div>
@@ -55,4 +60,4 @@ function NoMatch() {
   );
 }
 
-export default StartDemo;
+export default DemoOptionRoutes;

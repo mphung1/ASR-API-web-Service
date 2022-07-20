@@ -1,3 +1,5 @@
+//Unused component
+
 import React from "react";
 import DropZone from "react-dropzone";
 import {
