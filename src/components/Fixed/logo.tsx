@@ -31,7 +31,7 @@ const Logo = () => {
             fontWeight="bold"
             ml={3}
           >
-            ASR-AI Subtitles
+            ASR-AI
           </Text>
         </LogoBox>
       </a>

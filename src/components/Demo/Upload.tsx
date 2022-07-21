@@ -7,10 +7,10 @@ const { createFFmpeg, fetchFile } = require("@ffmpeg/ffmpeg");
 const ffmpeg = createFFmpeg({ log: true });
 const validFileTypes = "video/*, audio/*";
 
-const Upload = () => {
+const Upload = ({ uploadCallback }) => {
   const [loaded, setLoaded] = useState<boolean>(false);
   const [video, setVideo] = useState();
-  const [message, showMessage] = useState<boolean>(true);
+  // const [message, showMessage] = useState<boolean>(true);
 
   const fileMaxSize: number = 1000000000;
 
@@ -31,8 +31,11 @@ const Upload = () => {
           accept={validFileTypes}
           onChange={(event) => {
             if (event.target.files?.item(0).size < fileMaxSize) {
+              event.preventDefault();
               setVideo(event.target.files?.item(0));
-              showMessage(false);
+              // console.log(event.target.files?.item(0));
+              uploadCallback(URL.createObjectURL(event.target.files?.item(0)));
+              // showMessage(false);
             } else {
               window.alert(
                 "Your file cannot be larger than " +

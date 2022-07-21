@@ -19,7 +19,7 @@ const LinkItems: Array<LinkItemProps> = [
   { key: 1, name: "Search", path: "/Demo/Search" },
   { key: 2, name: "Upload", path: "/Demo/Upload" },
   { key: 3, name: "By URL", path: "/Demo/ByUrl" },
-  { key: 4, name: "Google Drive", path: "/Demo/GoogleDrive" },
+  // { key: 4, name: "Google Drive", path: "/Demo/GoogleDrive" },
 ];
 
 function OptionNavBar() {

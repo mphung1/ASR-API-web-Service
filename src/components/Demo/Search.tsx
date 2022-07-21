@@ -28,7 +28,7 @@ class Search extends React.Component<any, any> {
     this.setState({ selectedVideo: video });
     console.log("selected", video);
     const videoId = video.id.videoId;
-    this.props.parentCallback(videoId);
+    this.props.searchCallback(videoId);
   };
 
   render() {
@@ -50,5 +50,4 @@ class Search extends React.Component<any, any> {
     );
   }
 }
-console.log;
 export default Search;

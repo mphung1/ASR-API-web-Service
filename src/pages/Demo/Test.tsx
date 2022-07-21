@@ -7,7 +7,6 @@ import Search from "../../components/Demo/Search";
 import OptionNavBar from "../../components/Demo/OptionNavBar";
 import Upload from "../../components/Demo/Upload";
 import UrlReader from "../../components/Demo/UrlReader";
-import GoogleDrivePicker from "../../components/Demo/GoogleDrivePicker";
 import {
   Routes,
   Route,
@@ -19,32 +18,19 @@ import {
   BrowserRouter,
 } from "react-router-dom";
 
-const DemoOptionRoutes = () => {
+// const fs = require("fs");
+// const { createFFmpeg, fetchFile } = require("@ffmpeg/ffmpeg");
+// const ffmpeg = createFFmpeg({ log: true });
+
+const DemoOptionRoutes = (children) => {
   let location = useLocation();
 
-  // The `backgroundLocation` state is the location that we were at when one of
-  // the gallery links was clicked. If it's there, use it as the location for
-  // the <Routes> so we show the gallery in the background, behind the modal.
   let state = location.state as { backgroundLocation?: Location };
-
-  const [msg, setMsg] = useState();
-  const handleCallback = (childData) => {
-    setMsg(childData);
-  };
 
   return (
     <>
       <Routes location={state?.backgroundLocation || location}>
-        <Route path="/Demo" element={<OptionNavBar />}>
-          <Route
-            path="/Demo/Search"
-            element={<Search parentCallback={handleCallback} />}
-          />
-          <Route path="/Demo/Upload" element={<Upload />} />
-          <Route path="/Demo/ByUrl" element={<UrlReader />} />
-          <Route path="/Demo/GoogleDrive" element={<GoogleDrivePicker />} />
-          <Route path="*" element={<NoMatch />} />
-        </Route>
+        {children}
       </Routes>
     </>
   );
@@ -72,28 +58,37 @@ export default function Test() {
   const [url, setUrl] = useState<any | null>(null);
   const [value, setValue] = useState("");
   const [controls, handleToggleControls] = useState(true);
-  // const videoRef = createRef();
   const [options, showOptions] = useState(true);
+  // const videoRef = createRef();
+  // const handleConvert = async () => {
+  //   await ffmpeg.load();
+  //   //flac/wav/MP3
+  // };
 
   const renderContents = () => {
     showOptions(false);
   };
+
   const renderOptions = () => {
     showOptions(true);
   };
 
-  const handleCallback = (childData) => {
-    setUrl("https://www.youtube.com/embed/" + childData);
-    // console.log(url);
+  const handleSearchCallback = (videoId) => {
+    setUrl("https://www.youtube.com/embed/" + videoId);
   };
 
-  const handleInputChange = (e) => {
-    const inputValue = e.target.value;
+  const handleUploadCallback = (blob) => {
+    setUrl(blob);
+  };
+
+  const handleUrlCallback = (watchUrl) => {
+    setUrl(watchUrl);
+  };
+
+  const handleInputChange = (event) => {
+    const inputValue = event.target.value;
     setValue(inputValue);
-    // console.log(inputValue);
   };
-
-  // useEffect(() => {}, [msg]);
 
   const SEPARATOR = " · ";
 
@@ -113,16 +108,32 @@ export default function Test() {
       ) : ( */}
       {options ? (
         <>
-          <Box ml="44%" mt="2">
+          <Box ml="40%" mt="2">
             <ColoredButton
               onClick={renderContents}
               btnText="Choose this input"
             />
           </Box>
-          {/* <BrowserRouter>
-            <DemoOptionRoutes />
-          </BrowserRouter> */}
-          <Search parentCallback={handleCallback} />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/Demo" element={<OptionNavBar />}>
+                <Route
+                  path="/Demo/Search"
+                  element={<Search searchCallback={handleSearchCallback} />}
+                />
+                <Route
+                  path="/Demo/Upload"
+                  element={<Upload uploadCallback={handleUploadCallback} />}
+                />
+                <Route
+                  path="/Demo/ByUrl"
+                  element={<UrlReader urlCallback={handleUrlCallback} />}
+                />
+                {/* <Route path="/Demo/GoogleDrive" element={<GoogleDrivePicker />} /> */}
+                <Route path="*" element={<NoMatch />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
         </>
       ) : (
         <Box margin="auto" text-align="center">
@@ -139,8 +150,13 @@ export default function Test() {
               url={url}
               width={500}
               height={250}
-              controls={false}
-              playing={true}
+              controls={true}
+              playing={false}
+              config={{
+                file: {
+                  forceAudio: true,
+                },
+              }}
             />
             <table>
               <tbody>

@@ -15,10 +15,8 @@ export default function ColoredButton({
   btnText,
   textColor,
   rounded,
-  href,
   onClick,
   mr,
-  onchange,
 }: ColoredButtonProps) {
   return (
     <Button

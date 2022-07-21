@@ -1,15 +1,19 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import {
   Box,
   IconButton,
   useBreakpointValue,
   Stack,
+  Link,
   Heading,
   Text,
   Container,
 } from "@chakra-ui/react";
+import NextLink from "next/link";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import Slider from "react-slick";
+import ColoredButton from "./ColoredButton";
+import API_dashboard from "../../pages/API_Dashboard";
 
 const settings = {
   dots: true,
@@ -23,7 +27,24 @@ const settings = {
   slidesToScroll: 1,
 };
 
-export default function CaptionCarousel() {
+const LinkItem = ({
+  href,
+  path,
+  children,
+}: {
+  href: string;
+  path: string;
+  children: ReactNode;
+}) => {
+  const active = path == href;
+  return (
+    <NextLink href={href}>
+      <Link p={2}>{children}</Link>
+    </NextLink>
+  );
+};
+
+export default function CaptionCarousel(props) {
   const [slider, setSlider] = React.useState<Slider>(null);
 
   // Breakpoints which changes the position of buttons as the screen size changes
@@ -31,40 +52,45 @@ export default function CaptionCarousel() {
   const side = useBreakpointValue({ base: "30 %", md: "40px" });
   interface CardProps {
     title: string;
-    text: string;
+    text?: string;
     image: string;
+    linkText?: string;
+    href?: string;
   }
 
   const cards: Array<CardProps> = [
     {
-      title: "Our Team Story",
+      title: "ASR",
       text: "Automated Speech Recognition is a technology which enables machines to recognize and convert spoken language into text. ",
       image:
         "https://images.unsplash.com/photo-1507237998874-b4d52d1dd655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
+      linkText: "",
+      href: ".",
     },
-    {
-      title: "Research Summary",
-      text: "",
-      image:
-        "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80",
-    },
+
     {
       title: "Our Tech Stack",
       text: "",
       image:
         "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+      linkText: "",
+      href: ".",
     },
     {
       title: "The API Documentation",
       text: "",
       image:
         "https://images.unsplash.com/photo-1513530534585-c7b1394c6d51?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80",
+      linkText: "API Dashboard",
+      href: ".",
     },
     {
-      title: "Check out the application demo",
+      title: "The application demo",
       text: "",
       image:
-        "https://images.unsplash.com/photo-1523726491678-bf852e717f6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80",
+      linkText: "Check out",
+      href: ".",
     },
   ];
 
@@ -138,6 +164,9 @@ export default function CaptionCarousel() {
                 <Text fontSize={{ base: "md", lg: "lg" }} color="GrayText">
                   {card.text}
                 </Text>
+                <LinkItem href={card.href} path={props}>
+                  {card.linkText}
+                </LinkItem>
               </Stack>
             </Container>
           </Box>

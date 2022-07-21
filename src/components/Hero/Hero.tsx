@@ -7,6 +7,7 @@ import {
   Stack,
   Text,
   Button,
+  Link,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -40,33 +41,33 @@ const Hero = ({ resultRef }) => {
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const ModalPopUp = () => {
-    return (
-      <>
-        <Modal
-          closeOnOverlayClick={false}
-          size="full"
-          isOpen={isOpen}
-          onClose={onClose}
-        >
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Insert the input file</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <BrowserRouter>
-                <DemoOptionsRoutes />
-              </BrowserRouter>
-            </ModalBody>
-            <ModalFooter>
-              <SelectButton href="/Demo/Test" />
-              <Button onClick={onClose}>Cancel</Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </>
-    );
-  };
+  // const ModalPopUp = () => {
+  //   return (
+  //     <>
+  //       <Modal
+  //         closeOnOverlayClick={false}
+  //         size="full"
+  //         isOpen={isOpen}
+  //         onClose={onClose}
+  //       >
+  //         <ModalOverlay />
+  //         <ModalContent>
+  //           <ModalHeader>Insert the input file</ModalHeader>
+  //           <ModalCloseButton />
+  //           <ModalBody>
+  //             <BrowserRouter>
+  //               <DemoOptionsRoutes />
+  //             </BrowserRouter>
+  //           </ModalBody>
+  //           <ModalFooter>
+  //             <SelectButton href="/Demo/Test" />
+  //             <Button onClick={onClose}>Cancel</Button>
+  //           </ModalFooter>
+  //         </ModalContent>
+  //       </Modal>
+  //     </>
+  //   );
+  // };
 
   return (
     <Container maxW="container.lg">
@@ -88,18 +89,20 @@ const Hero = ({ resultRef }) => {
           <Type />
         </Heading>
         <Text colorScheme={"gray.500"} maxW={"3xl"}>
-          ASR is an open-source subtitle generator application that makes you
-          video transcripts and allows you to customize and export them. From
-          closed captions provided on YouTube to notes of meetings on Zoom, all
-          is now easy and accessible!
+          An open-source subtitle generator application that makes you video
+          transcripts and allows you to customize and export them. From closed
+          captions provided on YouTube to notes of meetings on Zoom, all is now
+          easy and accessible!
         </Text>
         <Stack spacing={6} direction={"row"}>
-          <ColoredButton
-            onClick={onOpen}
-            btnText="Get started"
-            rounded={"full"}
-          />
-          <ModalPopUp />
+          <NextLink href="/Demo/Test">
+            <ColoredButton
+              onClick={onOpen}
+              btnText="Get started"
+              rounded={"full"}
+            />
+          </NextLink>
+
           <Button rounded={"full"} px={6} type="submit" onClick={onSubmit}>
             What this does?
           </Button>

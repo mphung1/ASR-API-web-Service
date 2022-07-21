@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import ReactPlayer from "react-player";
 
-function UrlReader() {
+function UrlReader({ urlCallback }) {
   const [value, setValue] = useState();
   const [url, setUrl] = useState();
   const [message, showMessage] = useState(true);
@@ -19,6 +19,7 @@ function UrlReader() {
     event.preventDefault();
     setUrl(value);
     showMessage(false);
+    urlCallback(value);
   };
 
   return (

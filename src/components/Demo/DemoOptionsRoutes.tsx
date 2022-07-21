@@ -35,7 +35,7 @@ const DemoOptionRoutes = () => {
           <Route path="/Demo/Search" element={<Search />} />
           <Route path="/Demo/Upload" element={<Upload />} />
           <Route path="/Demo/ByUrl" element={<UrlReader />} />
-          <Route path="/Demo/GoogleDrive" element={<GoogleDrivePicker />} />
+          {/* <Route path="/Demo/GoogleDrive" element={<GoogleDrivePicker />} /> */}
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
